@@ -128,14 +128,17 @@ html[data-theme=dark] .site-footer .footer-meta a:hover{color:#5047f8}
 @media(prefers-reduced-motion:reduce){body[data-nav-mode=bottom] .app-nav{transition:none!important}.copy-toast.is-showing{transform:translateX(var(--toast-group-shift,0px))!important}}
 
 /* Preserve circular theme controls inside the compact mobile dock. */
+.app-nav .dock-links{display:contents}
+.app-nav .dock-links>.nav-primary,.app-nav .dock-links>.contact-dropdown{position:relative;z-index:1}
 @media(max-width:760px){
   body[data-nav-mode=bottom] .app-nav{inset:auto 10px max(10px,env(safe-area-inset-bottom))!important;width:auto!important;max-width:400px;margin-inline:auto;padding:12px 6px!important;gap:4px;transform:none!important;--dock-control-height:44px}
   body[data-nav-mode=bottom] .app-nav .vinny-logo{flex:0 0 44px!important;width:44px!important;min-width:44px!important}
+  body[data-nav-mode=bottom] .app-nav .dock-links{display:flex;flex:1 1 auto;min-width:0;align-items:center;justify-content:center;gap:4px}
   body[data-nav-mode=bottom] .app-nav .nav-primary{flex:0 0 auto;justify-content:flex-start;gap:4px;margin:0!important}
   body[data-nav-mode=bottom] .app-nav .nav-primary a{flex:0 0 34px;width:34px;min-width:34px;padding:0!important;justify-content:center}
   body[data-nav-mode=bottom] .app-nav .contact-dropdown{flex:0 0 34px}
   body[data-nav-mode=bottom] .app-nav .contact-dropdown .nav-contact{width:34px;min-width:34px;padding:0!important;justify-content:center}
-  body[data-nav-mode=bottom] .app-nav .theme-tabs{flex:0 0 84px;width:84px;min-width:84px;height:44px;padding:3px;gap:2px;margin-left:auto}
+  body[data-nav-mode=bottom] .app-nav .theme-tabs{flex:0 0 84px;width:84px;min-width:84px;height:44px;padding:3px;gap:2px;margin-left:0}
   body[data-nav-mode=bottom] .app-nav .theme-tabs button{flex:0 0 38px;width:38px;min-width:38px;height:38px;padding:0;place-items:center}
   body[data-nav-mode=bottom] .app-nav .theme-tabs svg{flex:none;width:20px!important;height:20px!important;min-width:20px}
   body[data-nav-mode=bottom] .app-nav .theme-tabs::before{top:3px;bottom:3px;left:3px;width:38px}

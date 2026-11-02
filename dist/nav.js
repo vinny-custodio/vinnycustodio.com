@@ -206,6 +206,10 @@
   }
   const primary=document.querySelector('.app-nav .nav-primary');
   if(primary&&!primary.querySelector('[data-nav-link="hire"]'))primary.insertAdjacentHTML('beforeend',`<a href="${href('hire-me/')}" data-nav-link="hire" data-tooltip="Mentorship" aria-label="Mentorship"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-12h-8z"/></svg><span>Mentorship</span></a>`);
+  if(primary&&!primary.closest('.dock-links')){
+    const cluster=document.createElement('div');cluster.className='dock-links';primary.before(cluster);cluster.append(primary);
+    const contact=document.querySelector('.app-nav .contact-dropdown');if(contact)cluster.append(contact);
+  }
   if(!inDrawer){
     const sharedStyle=document.createElement('link');sharedStyle.rel='stylesheet';sharedStyle.href=href('about-top-nav.css?v=9');document.head.append(sharedStyle);
     const sharedNav=document.createElement('script');sharedNav.src=href('about-top-nav.js?v=8');document.head.append(sharedNav);

@@ -197,8 +197,8 @@
     if(!link||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
     const target=new URL(link.href);if(target.hash!=='#work')return;
     event.preventDefault();event.stopImmediatePropagation();
-    if(document.body.classList.contains('home-page'))revealWork();
-    else{sessionStorage.setItem('portfolio-reveal-work','1');location.href=href('#top')}
+    const navigate=()=>{if(document.body.classList.contains('home-page'))revealWork();else{sessionStorage.setItem('portfolio-reveal-work','1');location.href=href('#top')}};
+    if(window.portfolioCloseMobileMenu)window.portfolioCloseMobileMenu().then(navigate);else navigate();
   },true);
   if(document.body.classList.contains('home-page')&&sessionStorage.getItem('portfolio-reveal-work')){
     sessionStorage.removeItem('portfolio-reveal-work');
@@ -207,8 +207,8 @@
   const primary=document.querySelector('.app-nav .nav-primary');
   if(primary&&!primary.querySelector('[data-nav-link="hire"]'))primary.insertAdjacentHTML('beforeend',`<a href="${href('hire-me/')}" data-nav-link="hire" data-tooltip="Mentorship" aria-label="Mentorship"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-12h-8z"/></svg><span>Mentorship</span></a>`);
   if(!inDrawer){
-    const sharedStyle=document.createElement('link');sharedStyle.rel='stylesheet';sharedStyle.href=href('about-top-nav.css?v=8');document.head.append(sharedStyle);
-    const sharedNav=document.createElement('script');sharedNav.src=href('about-top-nav.js?v=7');document.head.append(sharedNav);
+    const sharedStyle=document.createElement('link');sharedStyle.rel='stylesheet';sharedStyle.href=href('about-top-nav.css?v=9');document.head.append(sharedStyle);
+    const sharedNav=document.createElement('script');sharedNav.src=href('about-top-nav.js?v=8');document.head.append(sharedNav);
   }
   addEventListener('hashchange', setCurrentLink);
 })();

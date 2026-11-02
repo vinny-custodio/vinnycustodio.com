@@ -1,0 +1,100 @@
+/* Source: Everkind Figma 1474:6416, 1:1130 and 3433:3681/3710.
+   Prototype controls are outside the device, never part of the app design. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.demo-stage,.demo-stage[data-view=home],.demo-stage[data-view=journal],.demo-stage[data-view=voice]{background:#f7d3e9}
+.demo-stage[data-view=voice] .reset-demo,.reset-demo{color:#664b68;border-color:#32234425;background:#ffffff55}
+.screen-outgoing{position:absolute;inset:0;z-index:1;pointer-events:none;background:#fff6f5;overflow:hidden;transform-origin:50% 50%}
+.screen-outgoing>.journal-view,.screen-outgoing>.voice-view,.screen-outgoing>.home-scroll{height:100%}
+.app>.journal-view,.app>.voice-view,.app>.home-scroll{transform-origin:50% 50%}
+.device-wrap{aspect-ratio:410/864;height:min(704px,calc(100svh - 110px))}
+.device{width:410px;height:864px}
+.status{height:44px;padding:17px 21.33px 0 39px;font-size:16px;line-height:22px;color:#1c191c}
+.status>img{width:auto;height:auto;align-self:start;margin-top:5px}
+.home-indicator{width:134px}
+.app{padding:0;background:#fff6f5;color:#241336;letter-spacing:.01em}
+.app:has(.journal-view){background:#fff6f5 url(../assets/everkind/journal-bg.svg) center/1057px 1436px no-repeat}
+.app img{display:block;max-width:100%}
+.app-header{height:120px;padding:64px 16px 16px;gap:16px}
+.app-header button{width:40px;height:40px;flex:0 0 40px;padding:8px;background:none}
+.app-header>button:first-child img{transform:rotate(90deg)}
+.brand{width:158px;height:29px;gap:2px}
+.brand img:first-child,.brand img:last-child{width:auto;height:auto;flex:none}
+.app-scroll.home-scroll{height:100%;padding:0 0 112px;position:relative;background:#fff6f5;isolation:isolate}
+.home-scroll:before{content:"";position:absolute;inset:0;min-height:100%;background:url(../assets/everkind/home-bg.png) center/cover;opacity:.5;z-index:-1;pointer-events:none}
+.home-header{padding-top:60px;display:flex;flex-direction:column;align-items:center;gap:16px;height:170px}
+.home-brand{position:relative;width:129.28px;height:48px;display:block}
+.home-brand img:first-child{position:absolute;left:3.05px;top:22.77px;width:auto;height:auto}
+.home-brand img:nth-child(2){position:absolute;left:70.7px;top:-.03px;width:auto;height:auto}
+.week{width:100%;height:46px;padding:0 16px;flex:none}
+.week span{width:40px;height:30px;padding:6px 0;text-align:center;font-size:12px;line-height:18px;color:#93828f}
+.week .today{color:#fff;font-weight:600;background:linear-gradient(#3c323c,#1c191c)}
+.home-body{padding:28px;display:flex;flex-direction:column;gap:48px}
+.home-body>h2{margin:0 0 -32px;font-size:24px;line-height:28px;color:#100212}
+.green-dot{width:10.39px;height:10.39px;background:#079c4a;box-shadow:0 0 0 4px #079c4a40;margin-left:4px;margin-right:20px}
+.reflection-card,.paper{border:1px solid #e9e3ea;border-radius:24px;background:#fff url(../assets/everkind/paper.png) center/cover;box-shadow:0 16px 24px #4e31611a}
+.reflection-card{padding:20px;margin:0}
+.reflection-card>p{font-size:16px;line-height:1.4;margin:0 0 16px;letter-spacing:.01em}
+.reply-preview{padding:20px;border:1px solid #a959c917;border-radius:16px;background:linear-gradient(189deg,#ffdee9 5.7%,#ffcce0 54.5%,#e6cdff);font-size:16px;line-height:1.4}
+.mini-compose{padding:8px;gap:8px;margin-top:16px;border-radius:16px;background:#ffffffd9;box-shadow:0 16px 24px #4e31611a;border-top:1px solid #fff}
+.mini-compose .round-control,.round-control{width:40px;height:40px;background:#1c191c0d;border-radius:16px;padding:6px;display:grid;place-items:center}
+.mini-compose .compose-link{min-width:0;align-self:stretch;border:1px solid #0000000d;border-radius:16px;padding:10px 12px;font-size:16px;line-height:1.4;background:#00000008;color:#100212a6}
+.mini-compose button{border-radius:16px}
+.meditation-section,.journals-section{display:flex;flex-direction:column;gap:24px}
+.section-title{margin:0;gap:8px}
+.section-title h2{font-size:24px;line-height:28px;color:#100212}
+.text-button{padding:6px 12px;line-height:12px;background:#ffffff40;border-color:#37214e26}
+.meditations{margin:0;gap:16px}
+.meditation{padding:12px;border:1px solid #e9e3ea;border-radius:24px;display:flex;flex-direction:column;gap:12px;min-width:0;box-shadow:0 16px 24px #4e31611a}
+.meditation-art{width:100%;aspect-ratio:1;height:auto;border-radius:12px;padding:0;display:block}
+.meditation-art img{object-fit:cover;width:100%;height:100%}
+.meditation-art span{top:0;left:0;border-radius:0 0 12px 0;padding:4px 12px;font-size:12px;line-height:16px;background:#1c191c;color:#f0b4cc}
+.meditation-title{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.meditation-title strong{font-size:22px;font-weight:500;line-height:1.2;margin:0;color:#100212}
+.meditation-title button{background:transparent;padding:0;width:24px;height:24px}
+.meditation-meta{display:flex;justify-content:space-between;align-items:center}
+.meditation-meta>span{padding:6px 10px;border-radius:999px;background:#e9e3ea;font-size:10px;line-height:12px}
+.meditation-meta button{width:28px;height:28px;border-radius:999px;background:#e9e3ea;display:grid;place-items:center;padding:0}
+.affirmation{margin:0;padding:32px;border:1px solid #e9e3ea;border-radius:24px;background:#fff;box-shadow:0 16px 24px #4e31611a;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;font-family:Figtree,Arial,sans-serif}
+.affirmation small{color:#37214e73;font-size:12px;line-height:18px;font-weight:500}
+.affirmation p{font-size:16px;font-weight:500;line-height:1.4;margin:-8px 0 0}
+.journal-link{margin:0;border-radius:24px;background:#fff;padding:20px;font-size:16px}
+.journal-link strong{font:500 24px/1.1 "Crimson Pro",Georgia,serif}
+.journal-link p{font-size:14px;line-height:1.4}
+.app-nav{height:79px;padding:8px 32px 18px;border-radius:24px 24px 0 0;align-items:flex-start;box-shadow:0 -5px 24px #4e31610d}
+.app-nav>button:not(.new-journal){position:relative;min-width:50px;padding:8px 0 0;gap:8px;font-size:10px;line-height:15px}
+.app-nav .active:before{content:"";position:absolute;top:0;left:50%;translate:-50% 0;width:12.4px;height:2px;border-radius:8px;background:linear-gradient(#ff4797,#4d00ac)}
+.app-nav .new-journal{width:77.766px;height:77.766px;padding:0;background:linear-gradient(133deg,#ff4797 .58%,#9120ce 64.67%,#4d00ac 107%);box-shadow:0 26px 32px #51008d6b;border:1px solid #0000001a}
+.journal-view{position:relative;display:block;height:844px}
+.paper-stack{position:absolute;top:149.5px;left:16px;right:16px;height:590px;margin:0;min-height:0}
+.paper-stack:before,.paper-stack:after{display:none}
+.paper{padding:40px 24px;height:590px;box-shadow:0 19px 32px #4e316133}
+.conversation{padding:0}
+.journal-empty{padding:0;width:228px;max-width:100%;margin:auto;gap:0}
+.journal-empty>img{margin-bottom:16px}
+.journal-empty strong{font-size:16px;line-height:1.4;font-weight:500;margin:0 0 8px}
+.journal-empty p{font-size:14px;line-height:1.4;color:#100212a6}
+.bubble{font-size:16px;line-height:1.4;margin-bottom:24px}
+.bubble.companion{padding:20px;border-radius:16px;border:1px solid #a959c917;background:linear-gradient(192deg,#ffdee9 5.7%,#ffcce0 54.5%,#e6cdff)}
+.journal-form{position:absolute;bottom:32px;left:16px;right:16px;margin:0;padding:8px;gap:8px;border-radius:24px;background:#ffffffd9;border-top:1px solid #fff;box-shadow:0 16px 24px #4e31611a}
+.journal-form input{height:42px;padding:10px 20px;border:1px solid #0000000d;border-radius:16px;background:#00000008;font-size:16px;line-height:1.4;letter-spacing:.01em}
+.composer-action{background:#1c191c0d}
+.voice-view{height:844px}
+.voice-close{top:80px;left:163px;padding:16px 24px;width:64px;height:64px}
+.voice-state{top:177.75px;margin:0;width:238px;font-size:24px;line-height:27px;letter-spacing:-.02em;color:#10021273}
+.voice-aura{width:238.855px;height:345.361px;top:272.8px;left:50%;translate:-50% 0}
+.voice-aura img{width:100%;height:100%;object-fit:fill}
+.voice-view[data-state=idle] .voice-aura{width:126.3px;height:182.9px;top:354px;transform:none;animation:none}
+.voice-view[data-state=processing] .voice-aura,.voice-view[data-state=responding] .voice-aura{width:366px;height:529px;top:180px}
+.voice-caption{position:absolute;top:698.75px;margin:0;font-size:12px;line-height:16px;color:#10021273}
+.mic-control{position:absolute;top:740px;left:163px;width:64px;height:64px;padding:16px 24px;background:linear-gradient(#e68fdfd9,#9d38ffd9)}
+.mic-control img{width:auto;height:auto;max-width:none}
+.voice-view[data-state=idle] .mic-control{background:#e9e3ea;box-shadow:none}
+.prototype-controls{position:absolute;right:32px;top:12%;max-width:195px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:#664b68}
+.prototype-controls>span{display:block;width:100%;font-size:11px}
+.prototype-controls button{padding:10px 14px;border-radius:99px;background:#ffffff66;border:1px solid #32234420;font-size:12px;line-height:1.3}
+.prototype-controls button:disabled{opacity:.4}
+.prototype-controls small{font-size:11px;width:100%}
+.prototype-status{position:absolute;bottom:20px;left:24px;max-width:300px;margin:0;color:#664b68;font-size:12px}
+.demo-stage[data-view=voice] .prototype-controls,.demo-stage[data-view=voice] .prototype-status{color:#e3d4eb}
+.demo-stage[data-view=voice] .prototype-controls button{color:#e3d4eb;border-color:#ffffff30;background:#ffffff10}
+@media(max-width:900px){.device-wrap{height:min(650px,calc(100svh - 125px));margin-top:0}.prototype-controls{top:auto;bottom:12px;left:16px;right:110px;max-width:none;gap:6px}.prototype-controls>span{display:none}.prototype-controls button{padding:7px 10px;font-size:10px}.prototype-controls small{width:auto;font-size:10px}.prototype-status{bottom:50px;font-size:10px;max-width:200px}.demo-note{top:12px}.demo-note>span{font-size:10px}.demo-note small{font-size:9px}.reset-demo{font-size:10px}}

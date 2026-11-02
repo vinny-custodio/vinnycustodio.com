@@ -1,0 +1,24 @@
+.collaborator-cursor{position:fixed;top:0;left:0;z-index:110;pointer-events:none;color:#5544ff;opacity:0;transition:opacity .12s ease}
+.collaborator-cursor.is-visible{opacity:1}
+.experience-guest{z-index:109;transition:opacity .18s ease}
+.experience-guest .guest-motif{width:28px;height:28px;transform-origin:center}
+.experience-guest .guest-motif svg{width:28px;height:28px;filter:none;transform-origin:50% 80%}
+.experience-guest span{top:29px;left:15px}
+.experience-guest.is-visible .guest-motif svg{animation:guest-greeting 3.4s ease-in-out calc(.9s + var(--guest-delay)) 1}
+@keyframes guest-greeting{0%,65%,100%{transform:translateY(0) rotate(0)}15%{transform:translateY(-7px) rotate(-14deg)}27%{transform:translateY(-5px) rotate(12deg)}39%{transform:translateY(-6px) rotate(-8deg)}50%{transform:translateY(0) rotate(3deg)}}
+@media(prefers-reduced-motion:reduce){.experience-guest.is-visible .guest-motif svg{animation:none}}
+@media(prefers-reduced-motion:reduce){.experience-guest{transition:none}}
+.reel-grid figure{position:relative}
+.reel-case-link{position:absolute;inset:0;z-index:2;border-radius:inherit}
+.reel-case-link:focus-visible{outline:3px solid #8c78ff;outline-offset:-5px}
+.reel-cut:not(.is-active),.work-reel:not(.is-grid) .reel-grid{pointer-events:none}
+@media(hover:hover) and (pointer:fine){[data-reel-case]{cursor:none}}
+.collaborator-cursor svg{display:block;width:24px;height:24px;filter:drop-shadow(0 1px 2px rgb(0 0 0 / .12))}
+.collaborator-cursor span{transition:rotate .22s ease-out,scale .25s ease-out}
+.collaborator-cursor span{position:absolute;top:25px;left:15px;padding:8px 12px;border-radius:3px 12px 12px 12px;background:currentColor;box-shadow:0 3px 10px rgb(0 0 0 / .08);font:500 12px/1.2 var(--display);white-space:nowrap;color:#fff;background:#5544ff;transform-origin:top left;scale:.92;transition:scale .25s cubic-bezier(.2,1.15,.3,1)}
+.collaborator-cursor.is-visible span{scale:1}
+.collaborator-cursor.label-left span{left:auto;right:4px;border-radius:12px 3px 12px 12px}
+.collaborator-cursor.label-above span{top:auto;bottom:6px}
+@media(hover:hover) and (pointer:fine){.has-collaborator-cursor,.has-collaborator-cursor *{cursor:none!important}}
+@media(prefers-reduced-motion:reduce){.collaborator-cursor,.collaborator-cursor span{transition:none;scale:1}}
+@media(hover:none),(pointer:coarse){.collaborator-cursor{display:none}}

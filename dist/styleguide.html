@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Styleguide — Vinny Custodio</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css?v=46">
+  <script src="nav.js?v=40" defer></script>
+  <style>
+    .guide { max-width: 1200px; margin: 0 auto; padding: 120px var(--gutter); }
+    .guide-header { display:flex; justify-content:space-between; align-items:end; padding-bottom:40px; border-bottom:1px solid var(--line); }
+    .guide h1 { margin:0; font-size:clamp(52px,8vw,110px); letter-spacing:-.07em; line-height:.9; }
+    .guide h2 { margin:100px 0 24px; font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+    .swatches { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+    .swatch { aspect-ratio:1; border:1px solid var(--line); border-radius:12px; padding:14px; display:flex; align-items:end; font:11px var(--mono); }
+    .type-row { border-top:1px solid var(--line); padding:28px 0; display:grid; grid-template-columns:160px 1fr; gap:24px; }
+    .type-row span { font:11px var(--mono); color:var(--muted); }
+    .display-xl { font-size:clamp(56px,9vw,120px); line-height:.9; letter-spacing:-.07em; }
+    .display-md { font-size:52px; line-height:1; letter-spacing:-.05em; }
+    .body-lg { font-size:24px; line-height:1.4; }
+    .controls { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+    .button { display:inline-flex; gap:10px; align-items:center; padding:13px 16px; background:var(--ink); color:var(--white); border-radius:7px; font-weight:600; }
+    .button.secondary { background:transparent; color:var(--ink); border:1px solid var(--ink); }
+    .icon-set { display:flex; gap:12px; }
+    .icon-set span { width:52px; height:52px; border:1px solid var(--line); border-radius:9px; display:grid; place-items:center; }
+    .icon-set svg { width:22px; }
+    .swatch, .icon-set span { border-radius:16px; }
+    .button { border-radius:999px; }
+    .guide-header, .type-row { border:none; }
+    @media(max-width:700px){ .swatches{grid-template-columns:repeat(2,1fr)} .type-row{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <main class="guide">
+    <header class="guide-header"><div><p class="eyebrow">Foundation · v0.1</p><h1>Style<br>guide.</h1></div><a href="index.html">← Portfolio</a></header>
+    <h2>Colour</h2>
+    <div class="swatches">
+      <div class="swatch" style="background:#11110f;color:#fff">Ink · #11110F</div>
+      <div class="swatch" style="background:#ffffff">Paper · #FFFFFF</div>
+      <div class="swatch" style="background:#fffdf8">White · #FFFDF8</div>
+      <div class="swatch" style="background:#d7ff45">Acid · #D7FF45</div>
+      <div class="swatch" style="background:#ff2b62;color:#fff">Signal · #FF2B62</div>
+    </div>
+    <h2>Typography</h2>
+    <div class="type-row"><span>Display XL / Geist 600</span><div class="display-xl">Clarity, crafted.</div></div>
+    <div class="type-row"><span>Display MD / Geist 600</span><div class="display-md">Complex → clear</div></div>
+    <div class="type-row"><span>Body LG / Geist 400</span><div class="body-lg">Design systems, product thinking, and the visual craft needed to make useful things feel obvious.</div></div>
+    <div class="type-row"><span>Label / Geist</span><div class="eyebrow">Selected work · 01—06</div></div>
+    <h2>Controls + icons</h2>
+    <div class="controls">
+      <a class="button" href="#">Primary action →</a>
+      <a class="button secondary" href="#">Secondary action</a>
+      <div class="icon-set">
+        <span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+        <span><svg viewBox="0 0 24 24"><path d="M18 6 6 18M8 6h10v10"/></svg></span>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

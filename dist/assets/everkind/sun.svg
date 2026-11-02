@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="sun-light">
+<path id="Vector" d="M44 24H46M24 4V2M24 46V44M40 40L38 38M40 8L38 10M8 40L10 38M8 8L10 10M2 24H4M24 36C27.1826 36 30.2348 34.7357 32.4853 32.4853C34.7357 30.2348 36 27.1826 36 24C36 20.8174 34.7357 17.7652 32.4853 15.5147C30.2348 13.2643 27.1826 12 24 12C20.8174 12 17.7652 13.2643 15.5147 15.5147C13.2643 17.7652 12 20.8174 12 24C12 27.1826 13.2643 30.2348 15.5147 32.4853C17.7652 34.7357 20.8174 36 24 36Z" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="url(#paint0_linear_0_228)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_228" x1="2" y1="5.42586" x2="46.1177" y2="7.80742" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFDEE9" style="stop-color:#FFDEE9;stop-color:color(display-p3 1.0000 0.8700 0.9133);stop-opacity:1;"/>
+<stop offset="0.254808" stop-color="#FEB1E2" style="stop-color:#FEB1E2;stop-color:color(display-p3 0.9952 0.6938 0.8847);stop-opacity:1;"/>
+<stop offset="0.943464" stop-color="#B872FF" style="stop-color:#B872FF;stop-color:color(display-p3 0.7210 0.4471 1.0000);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+</svg>

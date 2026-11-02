@@ -1,0 +1,6 @@
+.case-editorial .case-editorial-section{width:100%;max-width:1050px;margin:clamp(56px,7vw,100px) 0 40px!important}
+.case-editorial-section h2{margin:22px 0;font-size:clamp(28px,3.2vw,42px);font-weight:500;line-height:1.15;letter-spacing:-.02em}
+.case-editorial .case-editorial-copy{max-width:1020px;margin:0;font-size:clamp(18px,2vw,23px);line-height:1.52;color:var(--muted);letter-spacing:0}
+.case-editorial .case-intro{margin-bottom:40px}
+.case-story .case-interactive{height:800px;aspect-ratio:auto!important;min-height:0;isolation:isolate}
+@media(max-width:600px){.case-story .case-interactive{height:760px;margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));border-radius:24px}}

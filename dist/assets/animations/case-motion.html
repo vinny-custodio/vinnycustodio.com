@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}lottie-player{display:block;width:100%;height:100%}button{position:absolute;right:12px;bottom:12px;border:1px solid #bbb;border-radius:20px;background:#fff;color:#111;padding:7px 12px;cursor:pointer}</style>
+  <script src="lottie-player.min.js"></script>
+</head>
+<body>
+  <lottie-player loop autoplay></lottie-player><button type="button" aria-label="Pause animation">Pause</button>
+  <script>
+    const player = document.querySelector('lottie-player');
+    const button = document.querySelector('button');
+    const name = new URLSearchParams(location.search).get('name');
+    const allowed = ['melon-hero', 'design-labs-slides'];
+    let paused = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const label = () => {button.textContent = paused ? 'Play' : 'Pause';button.setAttribute('aria-label', `${paused ? 'Play' : 'Pause'} animation`);};
+    if (allowed.includes(name)) {
+      player.setAttribute('autoplay', paused ? 'false' : 'true');
+      player.setAttribute('src', `${name}.json`);
+    }
+    button.addEventListener('click', () => {paused = !paused;paused ? player.pause() : player.play();label();});
+    label();
+  </script>
+</body>
+</html>

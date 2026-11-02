@@ -1,0 +1,4 @@
+.reel-scroll-notch.has-liquid-motion::before{display:none}
+.reel-scroll-notch .notch-liquid{position:absolute;inset:0 auto auto -48px;display:block;width:249px;height:100px;translate:none;transform:none;animation:none;overflow:visible;pointer-events:none;fill:#fff}
+html[data-theme=dark] .reel-scroll-notch .notch-liquid{fill:var(--paper,#111114)}
+.reel-scroll-notch .notch-arrow{animation:none;transform-origin:center}

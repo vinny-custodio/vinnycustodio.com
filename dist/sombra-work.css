@@ -1,0 +1,22 @@
+.sombra-work{position:fixed;inset:auto 0 -14svh;height:58svh;z-index:0;pointer-events:none;opacity:0;transform-origin:center bottom;contain:paint;background:url('assets/sombra-work.svg?v=blue1') center bottom/150% 110% no-repeat;mask-image:linear-gradient(to bottom,transparent,#000 32%)}
+.home-page .hero-reel-sequence{position:relative;z-index:1}
+.home-page .hero,html[data-theme=dark] .home-page .hero{background:transparent!important}
+.home-page .work-section{z-index:5;background:transparent!important;isolation:auto}
+.home-page .work-section::before{background:transparent!important}
+.home-page .about-section{position:relative;z-index:5}
+.home-page .about-section,.home-page .about-intro,.home-page .timeline,.home-page .timeline li,html[data-theme=dark] .home-page .timeline li{background:transparent!important}
+.home-page .timeline{display:grid;gap:16px}
+.home-page .timeline li{position:sticky;top:calc(100px + var(--experience-index,0)*7px);z-index:var(--experience-index,0);grid-template-columns:110px minmax(0,1fr);gap:24px;align-items:start}
+.home-page .timeline li>span{padding:6px 0;color:var(--muted);font-size:12px;line-height:1.5}
+.home-page .timeline li>div{border-left:1px solid rgba(120,120,135,.16);padding-left:24px}
+.home-page .timeline h3{line-height:1.25;margin-bottom:12px}
+.home-page .timeline p{font-size:16px;line-height:1.6}
+@media(prefers-reduced-motion:reduce){.home-page .timeline li{position:relative;top:auto}}
+.home-page .timeline li,.home-page .timeline li+li{padding:28px 32px;border:0!important;border-radius:32px;background:#fff!important;box-shadow:0 0 0 1px rgba(25,25,40,.065),0 2px 4px rgba(25,25,40,.02),0 12px 32px rgba(25,25,40,.04)}
+html[data-theme=dark] .home-page .timeline li,html[data-theme=dark] .home-page .timeline li+li{background:#1b1b1f!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 10px 28px rgba(0,0,0,.12)}
+@media(max-width:760px){.home-page .timeline li{padding:24px;top:calc(24px + var(--experience-index,0)*4px);grid-template-columns:1fr;gap:12px;border-radius:24px}.home-page .timeline li>span{padding-top:0}.home-page .timeline li>div{border-left:0;border-top:1px solid rgba(120,120,135,.16);padding:16px 0 0}}
+.home-page .site-footer{position:relative;z-index:6}
+.home-page .sombra-work{background-blend-mode:normal;filter:opacity(.13)}
+html[data-theme=dark] .home-page .sombra-work{filter:opacity(.1)}
+@media(max-width:760px){.sombra-work{display:none}}
+@media(prefers-reduced-motion:reduce){.sombra-work{transform:none!important}}

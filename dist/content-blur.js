@@ -5,6 +5,7 @@
   const seen=new WeakSet(),animated=new WeakSet();
   function reveal(target){
     if(animated.has(target)||(target.matches('.project')&&(target.hidden||target.getAttribute('aria-hidden')==='true')))return;
+    if(target.matches('.project')){const bounds=target.getBoundingClientRect();if(bounds.bottom<0||bounds.top>innerHeight||bounds.right<0||bounds.left>innerWidth)return;}
     const surface=target.matches('.project')?target.querySelector(':scope > a'):target;if(!surface)return;
     animated.add(target);observer.unobserve(target);
     const animation=surface.animate([{filter:'blur(7px)'},{filter:'blur(0px)'}],{duration:850,easing:'cubic-bezier(.2,.7,.2,1)'});animation.onfinish=()=>animation.cancel();

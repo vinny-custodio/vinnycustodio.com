@@ -6,7 +6,7 @@
   const inDrawer = new URLSearchParams(location.search).has('drawer');
   const emailAddress = 'hello@vinnycustodio.com';
   const blurScript=document.createElement('script');
-  blurScript.src=href('content-blur.js?v=3');document.head.append(blurScript);
+  blurScript.src=href('content-blur.js?v=4');document.head.append(blurScript);
   const iconScript = document.createElement('script');
   iconScript.src = href('iconoir-icons.js?v=2');
   document.head.append(iconScript);

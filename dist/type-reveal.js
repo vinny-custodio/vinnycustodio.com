@@ -1,6 +1,7 @@
 (() => {
-  if (document.body.classList.contains('case-body')) return;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  const root=document.documentElement;
+  if(document.body.classList.contains('case-body')){root.classList.remove('motion-boot');return;}
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){root.classList.remove('motion-boot');return;}
   const observer = new IntersectionObserver(entries => {
     entries.forEach(({target, isIntersecting}) => {
       if (!isIntersecting) return;
@@ -13,4 +14,5 @@
     element.classList.add('type-reveal');
     observer.observe(element);
   });
+  root.classList.remove('motion-boot');
 })();

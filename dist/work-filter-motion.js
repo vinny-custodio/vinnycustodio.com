@@ -43,7 +43,10 @@
   function measure(){
     cancelAnimationFrame(frame);frame=0;trailRelease=0;
     buttons.forEach((button,i)=>{const b=box(button),p=backgrounds[i];p.style.width=b.w+'px';p.style.height=b.h+'px';p.style.transform='translate('+b.x+'px,'+b.y+'px)'});
-    svg.style.width=group.scrollWidth+'px';svg.style.height=group.scrollHeight+'px';
+    // Keep the SVG sized to the pills, never its own overflowing filter bounds.
+    const paddingRight=parseFloat(getComputedStyle(group).paddingRight)||0;
+    svg.style.width=Math.max(group.clientWidth,...buttons.map(button=>button.offsetLeft+button.offsetWidth+paddingRight))+'px';
+    svg.style.height=group.clientHeight+'px';
     target=box(active);
     states=[0,1].map(()=>({...target,vx:0,vy:0,vw:0,vh:0}));
     paint();

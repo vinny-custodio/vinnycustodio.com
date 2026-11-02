@@ -14,6 +14,7 @@
   panel.addEventListener('click',event=>{const link=event.target.closest('a');if(link){if(link.href.startsWith('mailto:')){clearTimeout(timer);timer=setTimeout(close,2700)}else close()}});
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelector('.hero-identity')?.animate([{opacity:0},{opacity:1}],{duration:850,delay:100,easing:'ease-out',fill:'backwards'});
  }
+ document.documentElement.classList.remove('hero-nav-boot');
  const title=document.querySelector('.hero h1');if(!title)return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const paths=[
@@ -74,5 +75,5 @@
  title.addEventListener('pointerout',restore);
  title.addEventListener('pointerup',event=>{if(event.pointerType!=='mouse')restore(event)});
  title.addEventListener('pointercancel',restore);
- setTimeout(split,reduced.matches?0:2200);
+ if(reduced.matches||title.dataset.entranceComplete==='true')split();else title.addEventListener('hero:entered',split,{once:true});
 })();

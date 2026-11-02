@@ -1,0 +1,4 @@
+@media(prefers-reduced-motion:no-preference){
+html.hero-boot .hero :is(h1,.hero-sticker,.hero-foot p,.hero-label),html.hero-nav-boot .hero-identity{opacity:0!important}
+html.motion-boot body:not(.case-body) :is(main h1,main h2,main h3,main p,.site-footer h2,.site-footer .footer-copy):not(.hero *,.project-list *,.timeline *,.work-reel *,.work-reel-label,.work-reel-count,.particle-caption){opacity:0!important}
+}

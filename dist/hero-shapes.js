@@ -2,7 +2,8 @@
  const topNav=document.querySelector('.hero-top-nav');
  if(topNav){
   document.querySelectorAll('.app-nav .nav-primary a').forEach(link=>{const copy=link.cloneNode(true);copy.removeAttribute('data-nav-link');copy.removeAttribute('data-tooltip');topNav.append(copy)});
-  topNav.insertAdjacentHTML('beforeend','<a href="hire-me/"><span>Mentorship</span></a><details class="hero-top-contact"><summary>Get in contact <span aria-hidden="true">↗</span></summary><div class="top-contact-options"><a href="mailto:hello@vinnycustodio.com">Copy email</a><a href="https://www.linkedin.com/in/vinnycustodio/" target="_blank" rel="noopener">LinkedIn ↗</a></div></details>');
+  if(!topNav.querySelector('a[href$="hire-me/"]'))topNav.insertAdjacentHTML('beforeend','<a href="hire-me/"><span>Mentorship</span></a>');
+  topNav.insertAdjacentHTML('beforeend','<details class="hero-top-contact"><summary>Get in contact <span aria-hidden="true">↗</span></summary><div class="top-contact-options"><a href="mailto:hello@vinnycustodio.com">Copy email</a><a href="https://www.linkedin.com/in/vinnycustodio/" target="_blank" rel="noopener">LinkedIn ↗</a></div></details>');
   const contact=topNav.querySelector('details'),trigger=contact.querySelector('summary'),panel=contact.querySelector('.top-contact-options');
   let closing=null,timer;
   function close(){clearTimeout(timer);if(!contact.open)return;closing?.cancel();closing=panel.animate([{transform:'translateY(0) scale(1)'},{transform:'translateY(-12px) scale(.96)'}],{duration:280,easing:'cubic-bezier(.2,.8,.2,1)'});closing.onfinish=()=>{contact.open=false;closing=null};}

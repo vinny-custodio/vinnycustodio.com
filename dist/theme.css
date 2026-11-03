@@ -148,3 +148,16 @@ html[data-theme=dark] .site-footer .footer-meta a:hover{color:#5047f8}
   body[data-nav-mode=bottom] .app-nav .nav-primary{flex:0 0 auto;justify-content:flex-start}
   body[data-nav-mode=bottom] .app-nav .contact-dropdown,body[data-nav-mode=bottom] .app-nav .nav-contact,body[data-nav-mode=bottom] .app-nav .theme-tabs{margin-left:0}
 }
+
+/* A small confirmation grows upward from the mobile dock's center. */
+@media(max-width:760px){
+  .copy-toast.toast-mobile{position:absolute;left:50%!important;right:auto!important;bottom:calc(100% - 3px)!important;top:auto;width:max-content;max-width:calc(100vw - 48px);min-width:0;height:auto!important;min-height:46px;padding:11px 18px;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;background:linear-gradient(165deg,#746bff,#5047f8 70%);color:#fff;clip-path:none;opacity:1;visibility:hidden;pointer-events:none;transform:translate(-50%,35px) scale(.34,.45);transform-origin:50% 100%;transition:transform .48s cubic-bezier(.3,0,.2,1),visibility 0s .48s;z-index:-1;box-shadow:inset 0 1px 0 rgb(255 255 255 / .2),0 5px 16px rgb(45 33 150 / .12)}
+  .copy-toast.toast-mobile::after{content:'';position:absolute;z-index:-1;bottom:-10px;left:50%;width:30px;height:18px;border-radius:0 0 24px 24px;background:#5047f8;transform:translateX(-50%)}
+  .copy-toast.toast-mobile.is-showing{opacity:1;visibility:visible;transform:translate(-50%,-7px) scale(1);transition:transform .65s cubic-bezier(.16,1.15,.3,1),visibility 0s}
+  .copy-toast.toast-mobile .copy-toast-icon{flex:0 0 24px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;font-size:14px}
+  .copy-toast.toast-mobile strong{font-size:14px;font-weight:500;line-height:1.3;white-space:nowrap;color:#fff}
+  .copy-toast.toast-mobile small{display:none}
+  .copy-toast.toast-mobile.toast-detached{position:fixed;bottom:max(24px,env(safe-area-inset-bottom))!important;z-index:120}
+  .copy-toast.toast-mobile.toast-detached::after{display:none}
+}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){.copy-toast.toast-mobile,.copy-toast.toast-mobile.is-showing{transform:translateX(-50%)!important;transition:none}}

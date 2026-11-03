@@ -28,7 +28,17 @@
     toast.querySelector('small').textContent=detail;
     toast.querySelector('.copy-toast-icon').textContent=icon;
     const dock = document.querySelector('[data-app-nav]');
-    if (dock) {
+    const mobile=matchMedia('(max-width:760px)').matches;
+    toast.classList.toggle('toast-mobile',mobile);
+    toast.classList.remove('toast-detached');
+    if(mobile){
+      toast.classList.remove('toast-above');
+      ['left','right','bottom','height'].forEach(property=>toast.style.removeProperty(property));
+      dock?.style.setProperty('--toast-shift','0px');
+      const detached=!dock||document.body.classList.contains('nav-before-reel')||document.body.classList.contains('mobile-menu-open');
+      toast.classList.toggle('toast-detached',detached);
+      (detached?document.body:dock).append(toast);
+    }else if (dock) {
       dock.append(toast);
       const bounds = dock.getBoundingClientRect();
       const width = toast.offsetWidth;

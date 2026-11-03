@@ -161,3 +161,11 @@ html[data-theme=dark] .site-footer .footer-meta a:hover{color:#5047f8}
   .copy-toast.toast-mobile.toast-detached::after{display:none}
 }
 @media(max-width:760px) and (prefers-reduced-motion:reduce){.copy-toast.toast-mobile,.copy-toast.toast-mobile.is-showing{transform:translateX(-50%)!important;transition:none}}
+
+/* Touch taps must not latch the desktop logo expansion. */
+@media(max-width:760px),(hover:none),(pointer:coarse){
+  body .vinny-logo,body .vinny-logo:is(:hover,:focus-visible,:active){width:48px!important;height:48px!important;min-width:48px;flex-shrink:0;transition:none!important}
+  body :is(.about-top-nav,.app-nav) .vinny-logo .vinny-logo-short{opacity:1!important;transform:none!important;transition:none!important}
+  body :is(.about-top-nav,.app-nav) .vinny-logo .vinny-logo-full{opacity:0!important;transform:none!important;transition:none!important}
+}
+@media(max-width:760px){body[data-nav-mode=bottom] .app-nav .vinny-logo,body[data-nav-mode=bottom] .app-nav .vinny-logo:is(:hover,:focus-visible,:active){width:44px!important;height:44px!important;min-width:44px!important;flex:0 0 44px!important}}

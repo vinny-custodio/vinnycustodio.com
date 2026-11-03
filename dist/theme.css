@@ -169,3 +169,16 @@ html[data-theme=dark] .site-footer .footer-meta a:hover{color:#5047f8}
   body :is(.about-top-nav,.app-nav) .vinny-logo .vinny-logo-full{opacity:0!important;transform:none!important;transition:none!important}
 }
 @media(max-width:760px){body[data-nav-mode=bottom] .app-nav .vinny-logo,body[data-nav-mode=bottom] .app-nav .vinny-logo:is(:hover,:focus-visible,:active){width:44px!important;height:44px!important;min-width:44px!important;flex:0 0 44px!important}}
+
+/* Keep the top mark square despite the dock's shared control-height rule. */
+@media(max-width:760px),(hover:none),(pointer:coarse){
+ body .about-top-nav .vinny-logo,body .about-top-nav .vinny-logo:is(:hover,:focus-visible,:active){width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;max-width:48px!important;max-height:48px!important;aspect-ratio:1;border-radius:50%!important;flex:0 0 48px!important}
+ body .app-nav .vinny-logo{border-radius:50%!important}
+}
+
+/* Mobile decks keep transforms, without extra filtered/shadow surfaces. */
+@media(max-width:760px){
+ .home-page .project,.home-page .project.is-deck-active{filter:none!important;backdrop-filter:none!important;box-shadow:0 8px 24px rgb(0 0 0 / .04)!important;transition-property:translate,background-color!important}
+ .home-page .project>a,.home-page .project .project-media,.home-page .project .project-media img{filter:none!important;backdrop-filter:none!important}
+ .home-page .project .project-media,.home-page .project .project-media img{box-shadow:none!important}
+}

@@ -20,7 +20,7 @@
   function scan(root=document){
     const elements=[...(root.matches?.(selector)?[root]:[]),...root.querySelectorAll(selector)];
     elements.forEach(element=>{
-      if(seen.has(element)||element.closest('.work-reel,.project-info'))return;
+      if(seen.has(element)||element.closest('.work-reel,.project-info')||(element.matches('.project')&&matchMedia('(max-width:760px)').matches))return;
       seen.add(element);observer.observe(element);
     });
   }

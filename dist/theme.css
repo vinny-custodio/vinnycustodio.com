@@ -178,7 +178,7 @@ html[data-theme=dark] .site-footer .footer-meta a:hover{color:#5047f8}
 
 /* Mobile decks keep transforms, without extra filtered/shadow surfaces. */
 @media(max-width:760px){
- .home-page .project,.home-page .project.is-deck-active{filter:none!important;backdrop-filter:none!important;box-shadow:0 8px 24px rgb(0 0 0 / .04)!important;transition-property:translate,background-color!important}
+ .home-page .project,.home-page .project.is-deck-active{filter:none!important;backdrop-filter:none!important;box-shadow:0 0 0 1px rgb(0 0 0 / .04),0 8px 24px rgb(0 0 0 / .04)!important;transition-property:translate,background-color!important}
  .home-page .project>a,.home-page .project .project-media,.home-page .project .project-media img{filter:none!important;backdrop-filter:none!important}
  .home-page .project .project-media,.home-page .project .project-media img{box-shadow:none!important}
 }

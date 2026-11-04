@@ -11,7 +11,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1] / 'dist'
     server = ThreadingHTTPServer((args.host, args.port), partial(SimpleHTTPRequestHandler, directory=str(root)))
-    print(f'Portfolio preview: http://{args.host}:{args.port}/', flush=True)
+    print(f'Portfolio preview: http://{args.host}:{server.server_port}/', flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

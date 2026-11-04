@@ -221,8 +221,8 @@
     const contact=document.querySelector('.app-nav .contact-dropdown');if(contact)cluster.append(contact);
   }
   if(!inDrawer){
-    const chatStyle=document.createElement('link');chatStyle.rel='stylesheet';chatStyle.href=href('about-chat.css?v=1');document.head.append(chatStyle);
-    const chatScript=document.createElement('script');chatScript.src=href('about-chat.js?v=1');document.head.append(chatScript);
+    const chatStyle=document.createElement('link');chatStyle.rel='stylesheet';chatStyle.href=href('about-chat.css?v=2');document.head.append(chatStyle);
+    const chatScript=document.createElement('script');chatScript.src=href('about-chat.js?v=2');document.head.append(chatScript);
     const sharedStyle=document.createElement('link');sharedStyle.rel='stylesheet';sharedStyle.href=href('about-top-nav.css?v=9');document.head.append(sharedStyle);
     const sharedNav=document.createElement('script');sharedNav.src=href('about-top-nav.js?v=8');document.head.append(sharedNav);
   }

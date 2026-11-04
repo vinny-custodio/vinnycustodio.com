@@ -12,7 +12,7 @@
   svg.innerHTML='<defs><filter id="work-filter-liquid-merge" x="-20%" y="-80%" width="140%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/><feColorMatrix in="blur" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 20 -8"/></filter></defs><g filter="url(#work-filter-liquid-merge)"><rect/><rect/></g>';
   group.prepend(svg);
   const rects=[...svg.querySelectorAll('rect')];
-  let frame=0,last=0,target=null,states=[],trailRelease=0;
+  let frame=0,last=0,target=null,states=[],trailRelease=0,geometryKey="";
   let active=group.querySelector('[aria-pressed="true"]');
   function box(button){return {x:button.offsetLeft,y:button.offsetTop,w:button.offsetWidth,h:button.offsetHeight}}
   function paint(){
@@ -40,13 +40,23 @@
       button.classList.toggle('liquid-covered',covered);
     });
   }
-  function measure(){
+  function measure(force=false){
+    const key=buttons.map(button=>Object.values(box(button)).join(",")).join(";");
+    if(force!==true&&key===geometryKey&&states.length)return;
+    geometryKey=key;
     cancelAnimationFrame(frame);frame=0;trailRelease=0;
     buttons.forEach((button,i)=>{const b=box(button),p=backgrounds[i];p.style.width=b.w+'px';p.style.height=b.h+'px';p.style.transform='translate('+b.x+'px,'+b.y+'px)'});
     // Keep the SVG sized to the pills, never its own overflowing filter bounds.
     const paddingRight=parseFloat(getComputedStyle(group).paddingRight)||0;
     svg.style.width=Math.max(group.clientWidth,...buttons.map(button=>button.offsetLeft+button.offsetWidth+paddingRight))+'px';
     svg.style.height=group.clientHeight+'px';
+    svg.setAttribute('width',parseFloat(svg.style.width));
+    svg.setAttribute('height',group.clientHeight);
+    const merge=svg.querySelector('filter');
+    merge.setAttribute('filterUnits','userSpaceOnUse');
+    merge.setAttribute('x','-24');merge.setAttribute('y','-24');
+    merge.setAttribute('width',parseFloat(svg.style.width)+48);
+    merge.setAttribute('height',group.clientHeight+48);
     target=box(active);
     states=[0,1].map(()=>({...target,vx:0,vy:0,vw:0,vh:0}));
     paint();
@@ -76,11 +86,11 @@
     const next=event.target.closest('button');
     if(!buttons.includes(next)||next===active)return;
     active=next;target=box(next);trailRelease=performance.now()+65;
-    if(reduced.matches){measure();return;}
+    if(reduced.matches){measure(true);return;}
     if(!frame){last=performance.now();frame=requestAnimationFrame(tick);}
   });
   new ResizeObserver(measure).observe(group);
   document.fonts?.ready.then(measure);
-  reduced.addEventListener('change',measure);
+  reduced.addEventListener('change',()=>measure(true));
   measure();
 })();

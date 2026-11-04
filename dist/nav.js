@@ -119,7 +119,7 @@
   const footer=document.querySelector('footer');
   if(footer){
     footer.className='site-footer';
-    footer.innerHTML=`<h2>From scrappy ideas<br>to polished craft.</h2><p class="footer-copy">I work across SaaS, apps, and websites, shaping the strategy, system, and interface into one coherent product.</p><a class="footer-email" href="mailto:${emailAddress}">${emailAddress} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="footer-meta"><p>Based in Halifax, Canada</p><div><a href="https://www.linkedin.com/in/vinnycustodio/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://dribbble.com/vinnycustodio" target="_blank" rel="noreferrer">Dribbble ↗</a><a href="${href('styleguide.html')}">Styleguide</a></div><p>© ${new Date().getFullYear()} Vinny Custodio</p></div>`;
+    footer.innerHTML=`<h2>From scrappy ideas<br>to polished craft.</h2><p class="footer-copy">I work across SaaS, apps, and websites, shaping the strategy, system, and interface into one coherent product.</p><a class="footer-email" href="mailto:${emailAddress}">${emailAddress} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="footer-meta"><p>Based in Halifax, Canada</p><div><a href="https://www.linkedin.com/in/vinnycustodio/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://dribbble.com/vinnycustodio" target="_blank" rel="noreferrer">Dribbble ↗</a></div><p>© ${new Date().getFullYear()} Vinny Custodio</p></div>`;
   }
 
   document.querySelector('.site-footer .footer-meta>div')?.insertAdjacentHTML('afterbegin', `<a href="${href('hire-me/')}">Mentorship</a>`);

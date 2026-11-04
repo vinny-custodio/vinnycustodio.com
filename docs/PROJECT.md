@@ -12,7 +12,7 @@ Vinny Custodio's portfolio. Plain HTML/CSS/JS, Geist typography, shared top navi
 - `dist/about-me/`: About page, always pure black with neutral pills and a photo marquee.
 - `dist/hire-me/`: mentorship only; public label is Mentorship. Other service offers were removed.
 - `dist/about-chat.js/css`: chat panel UI; `about-chat-knowledge.js`: curated professional responses, matching, typo handling, and boundaries.
-- `dist/assets/`: local image/animation assets. Everkind craft assets live in `assets/everkind/`; interactive demos are in `dist/everkind/`.
+- `dist/assets/`: local image/animation assets. Everkind craft images live in `assets/case-studies/everkind/`; UI SVGs live in `assets/everkind/`; interactive demos are in `dist/everkind/`.
 
 ## Current content decisions
 
@@ -37,3 +37,4 @@ Vinny Custodio's portfolio. Plain HTML/CSS/JS, Geist typography, shared top navi
 Main file: https://www.figma.com/design/2DvqG5OnntGFzMSHLnhmpS/
 Everkind craft frame: https://www.figma.com/design/2DvqG5OnntGFzMSHLnhmpS/?node-id=8048-25
 Exported assets needed to run the site are already in this repository. Figma editing access is separate from website recovery.
+

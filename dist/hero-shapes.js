@@ -71,30 +71,6 @@
   if(!reduced.matches)shape.animate([{transform:'translate(-50%,-50%) rotate(-18deg) scale(.35)'},{transform:'translate(-50%,-50%) rotate(7deg) scale(1.12)',offset:.65},{transform:'translate(-50%,-50%) rotate(0) scale(1)'}],{duration:420,easing:'cubic-bezier(.22,.8,.3,1)'});
  }
  function restore(event){const letter=event.target.closest('.hero-letter');if(!letter||letter.contains(event.relatedTarget))return;letter.classList.remove('is-shape');letter.querySelector('.hero-hover-shape')?.remove()}
- // A quiet scroll hint: one letter per line, only while the hero is visible.
- if(!reduced.matches){
-  let pendingScroll=false,lastSwap=0,lastY=scrollY;const active=new Map();
-  function clearScrollLetter(letter){active.delete(letter);letter.classList.remove('is-shape');letter.querySelector('.hero-hover-shape')?.remove();}
-  function swapOnScroll(){
-   pendingScroll=false;if(document.hidden||!title.querySelector('.hero-letter'))return;
-   const rect=title.getBoundingClientRect(),now=performance.now();
-   if(rect.bottom<40||rect.top>innerHeight-40||now-lastSwap<2000||Math.abs(scrollY-lastY)<35)return;
-   lastSwap=now;lastY=scrollY;
-   const lines=[...title.querySelectorAll('.hero-line')];
-   const groups=lines.length?lines.map(line=>[...line.querySelectorAll('.hero-letter')]):[...Array(3)].map((_,i)=>[...title.querySelectorAll('.hero-letter')].filter((_,n)=>n%3===i));
-   groups.slice(0,3).forEach((group,lineIndex)=>{
-    const candidates=group.filter(letter=>/[a-z]/i.test(letter.textContent)&&!letter.querySelector('.hero-hover-shape'));
-    if(!candidates.length)return;const letter=candidates[Math.floor(Math.random()*candidates.length)];
-    active.set(letter,setTimeout(()=>{
-     if(document.hidden||!letter.isConnected){active.delete(letter);return;}
-     index=Math.floor(Math.random()*paths.length);pop({target:letter});
-     active.set(letter,setTimeout(()=>clearScrollLetter(letter),1250));
-    },lineIndex*240));
-   });
-  }
-  addEventListener('scroll',()=>{if(!pendingScroll){pendingScroll=true;requestAnimationFrame(swapOnScroll)}},{passive:true});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){active.forEach((timer,letter)=>{clearTimeout(timer);clearScrollLetter(letter)})}});
- }
  title.addEventListener('pointerover',pop);title.addEventListener('pointerdown',pop);
  title.addEventListener('pointerout',restore);
  title.addEventListener('pointerup',event=>{if(event.pointerType!=='mouse')restore(event)});

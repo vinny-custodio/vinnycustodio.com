@@ -122,3 +122,15 @@ html[data-theme=dark] .about-page .client-list li+li{border-top-color:rgba(255,2
 .about-page footer.site-footer{background:#000!important;color:#ededed!important}
 .about-page footer.site-footer h2,.about-page footer.site-footer .footer-email{color:#ededed!important}
 .about-page footer.site-footer .footer-copy,.about-page footer.site-footer .footer-meta{color:#aaa!important}
+
+/* About shares the site's selected theme. */
+html:not([data-theme=dark]) .about-page{--paper:#fff;--panel:#f3f3f5;--ink:#272735;--muted:#777784;--line:rgba(39,39,53,.1);background:var(--paper);color:var(--ink);color-scheme:light}
+html:not([data-theme=dark]) .about-page .page-main :is(h1,h2,h3,p,figcaption){color:var(--ink)}
+html:not([data-theme=dark]) .about-page .page-hero>.eyebrow,html:not([data-theme=dark]) .about-page .about-lead .eyebrow{background:#f3f3f5;color:#555560;box-shadow:none}
+html:not([data-theme=dark]) .about-page .photo-rail .about-photo-car{background:#f3f3f5}
+html:not([data-theme=dark]) .about-page .about-top-nav{background:#fff;color:#272735}
+html:not([data-theme=dark]) .about-page .about-top-nav nav{background:#fff}
+html:not([data-theme=dark]) .about-page .about-top-nav :is(nav>a,summary,.about-menu-toggle):is(:hover,:focus-visible){background:#171719;color:#fff}
+html:not([data-theme=dark]) .about-page .about-chat-entry{background:#f3f3f5;color:#272735;border-color:#e5e5e8}
+html[data-theme=dark] .about-page{--paper:#1a1a1d;--panel:#242428;background:#1a1a1d}
+html[data-theme=dark] .about-page .about-top-nav{background:#1a1a1d}

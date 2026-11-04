@@ -99,7 +99,6 @@
   document.querySelector('.page-header, .case-header')?.remove();
   document.querySelector('[data-nav-collapse]')?.remove();
   function applyTheme(theme) {
-    if(document.body.classList.contains('about-page'))theme='dark';
     document.documentElement.dataset.theme = theme;
     document.querySelectorAll('[data-theme-option]').forEach(button => {
       const selected = button.dataset.themeOption === theme;
@@ -148,7 +147,6 @@
   oldToggle.outerHTML = `<div class="theme-tabs" role="radiogroup" aria-label="Color theme"><button type="button" role="radio" data-theme-option="light" aria-label="Light mode" title="Light mode">${sun}</button><button type="button" role="radio" data-theme-option="dark" aria-label="Dark mode" title="Dark mode">${moon}</button></div>`;
   applyTheme(localStorage.getItem('portfolio-theme') || 'light');
   function chooseTheme(theme) {
-    if(document.body.classList.contains('about-page')){showCopyToast('Cozy. Dark only.','Keeping the lights low.','💡');return;}
     const tabs = document.querySelector('.theme-tabs');
     const changed = document.documentElement.dataset.theme !== theme;
     if (changed && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -221,7 +219,7 @@
     const contact=document.querySelector('.app-nav .contact-dropdown');if(contact)cluster.append(contact);
   }
   if(!inDrawer){
-    const chatStyle=document.createElement('link');chatStyle.rel='stylesheet';chatStyle.href=href('about-chat.css?v=5');document.head.append(chatStyle);
+    const chatStyle=document.createElement('link');chatStyle.rel='stylesheet';chatStyle.href=href('about-chat.css?v=6');document.head.append(chatStyle);
     const chatScript=document.createElement('script');chatScript.src=href('about-chat.js?v=10');document.head.append(chatScript);
     const sharedStyle=document.createElement('link');sharedStyle.rel='stylesheet';sharedStyle.href=href('about-top-nav.css?v=9');document.head.append(sharedStyle);
     const sharedNav=document.createElement('script');sharedNav.src=href('about-top-nav.js?v=8');document.head.append(sharedNav);

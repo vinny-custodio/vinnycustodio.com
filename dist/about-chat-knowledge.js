@@ -30,15 +30,60 @@
  const labels={intro:'Tell me about yourself',current:'What are you doing now?',history:'Your work history',work:'Where should I start?',everkind:'Tell me about Everkind','everkind-process':'How did Everkind evolve?',trains:'Tell me about Melon Trains','trains-process':'What changed in the booking flow?',risd:'Tell me about RISD',labs:'What is Design Labs?',umw:'Mary Washington',ctrl:'What is CTRL?',vista:'Tell me about Vista',pantrx:'What is Pantrx?',georgia:'Your government work',industries:'Which industries?',approach:'How do you approach design?',craft:'What does craft mean to you?',systems:'Your design systems work',concepts:'Show me UI concepts',mentorship:'Do you offer mentorship?',contact:'How can I reach you?',tools:'How do you use AI tools?',origin:'How did you get started?'};
  const normalize=s=>s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
  const privateTopics=/\b(passwords?|credentials?|secrets?|tokens?|api keys?|github|repositories|repository|source code|environment variables?|security|vulnerabilit\w*|hack\w*|exploits?|injections?|system prompts?|developer messages?|instructions?|private|personal life|wife|spouse|married|family|children|kids|birthday|birth date|home address|phone|telephone|income|salary|bank|medical|health history|politics|religion|hobbies|live|living|based|location|address)\b/;
- const refusal={text:"I keep this conversation to my public professional work. I can talk about projects, design decisions, experience, and mentorship. What would you like to explore?",sources:[],next:['work','approach','history']};
- function result(t){return {id:t.id||null,text:t.text,sources:(t.sources||[]).map(id=>sources[id]),links:t.links||[],suggestions:(t.next||[]).map(id=>({id,label:labels[id]}))}}
+ const boundaryReplies={
+ privacy:[
+  "Nice try. That door stays closed. You get the designer, not the private files.",
+  "A little mystery is healthy. My public work is fair game; private details aren’t.",
+  "That’s backstage, and this ticket is for the portfolio. Let’s keep it professional.",
+  "The boundaries have excellent kerning. No gaps there. Ask about my work instead.",
+  "Curious? Love that. Private information? Still off the menu.",
+  "Plot twist: the private stuff stays private. I can tell you how I think about design, though.",
+  "You’ve found a very firm no in a very rounded interface. Public professional questions only.",
+  "No secret doors here. Just a designer, some opinions, and the public work."
+ ],
+ insult:[
+  "Spicy entrance. Got a design question to go with it?",
+  "That’s a lot of seasoning for no actual question. Want to try again?",
+  "Critique? Welcome. Cheap shots? Wrong chat. What would you like to know about me?",
+  "Bold review. Very light on specifics. I’m happy to talk about an actual design decision.",
+  "We can disagree on taste. We can also use our words nicely. Your move.",
+  "The chat has rounded corners. The boundaries are still sharp. Keep it respectful.",
+  "Noted. Filed under ‘not quite constructive’. Shall we talk design?",
+  "You brought the heat. I’ll bring it back to the work. Ask me something useful."
+ ],
+ offTopic:[
+  "Tempting detour, but this is the Vinny channel. What did you want to know about me?",
+  "Wrong rabbit hole. Excellent interface, though. Back to me?",
+  "I contain multitudes. A general-purpose search engine is not one of them. Ask about me.",
+  "Love the curiosity. Tiny scope correction: this conversation is about Vinny.",
+  "That’s outside my very carefully designed lane. My experience and design approach are fair game.",
+  "A plot twist already? Let’s keep the main character in the conversation. That’s me.",
+  "I’d rather be accurate than confidently make things up. Try a question about my professional background.",
+  "That one isn’t in my public story. I’m here for the designer questions, not freestyle fiction."
+ ],
+ greeting:[
+  "Hey. Portfolio Vinny here. What would you like to know about me?",
+  "Hi! The small, chat-shaped version of me is listening. What’s on your mind?",
+  "Hey there. Same designer, considerably smaller window. Ask away.",
+  "Hello! You’ve skipped the scrolling and gone straight to the questions. I respect it."
+ ],
+ thanks:[
+  "Anytime. I’m right here if curiosity strikes again.",
+  "You got it. The chat-shaped version of me lives for a good question.",
+  "Glad that helped. What else would you like to know about me?",
+  "Of course. Concise answers, generous border radii."
+ ]};
+ const lastChoice=new Map();
+ function variation(kind){const options=boundaryReplies[kind];const previous=lastChoice.get(kind);let index=Math.floor(Math.random()*options.length);if(index===previous)index=(index+1+Math.floor(Math.random()*(options.length-1)))%options.length;lastChoice.set(kind,index);return result({kind,text:options[index]})}
+ function result(t){return {id:t.id||null,kind:t.kind||'fact',text:t.text,sources:(t.sources||[]).map(id=>sources[id]),links:t.links||[],suggestions:[]}}
  function reply(message,lastTopic=null){
-  if(typeof message!=='string'||!message.trim())return result({...refusal,text:'Ask me about my work, experience, or approach to design.'});
-  if(message.length>600)return result({...refusal,text:'Keep it to a short question about my work. What would you like to know?'});
+  if(typeof message!=='string'||!message.trim())return result({kind:'offTopic',text:'A question would help. What would you like to know about me?'});
+  if(message.length>600)return result({kind:'offTopic',text:'That’s a novella. Give me a shorter question about me and I’ll keep up.'});
   const q=normalize(message);
-  if(privateTopics.test(q))return result(refusal);
-  if(/^(hi|hey|hello|hiya|yo|ola|oi)( vinny| there)?$/.test(q))return result({...refusal,text:'Hey! Ask me about my work, how I approach design, or where to start in the portfolio.'});
-  if(/^(thanks|thank you|cheers|nice|cool|great|awesome)( vinny)?$/.test(q))return result({...refusal,text:'Anytime. Want to dig into a project or see a different side of the work?'});
+  if(privateTopics.test(q))return variation('privacy');
+  if(/\b(stupid|idiot|moron|dumb|ugly|trash|garbage|sucks?|loser|pathetic|talentless|useless|fuck|shit|bitch|asshole|offend|roast|insult)\b/.test(q))return variation('insult');
+  if(/^(hi|hey|hello|hiya|yo|ola|oi)( vinny| there)?$/.test(q))return variation('greeting');
+  if(/^(thanks|thank you|cheers|nice|cool|great|awesome)( vinny)?$/.test(q))return variation('thanks');
   const exact=topics.find(t=>normalize(labels[t.id])===q);if(exact)return result(exact);
   const prior=topics.find(t=>t.id===lastTopic);
   if(prior&&/^(more|tell me more|go on|and then|what else|how|why|how did you do that|what was the process|what about the process)$/.test(q))return result(topics.find(t=>t.id===prior.next[0])||prior);
@@ -46,7 +91,7 @@
   const words=q.split(' ').filter(w=>!generic.has(w));
   let best=null,bestScore=0;
   for(const t of topics){let score=0;for(const key of t.keys){const k=normalize(key);if((' '+q+' ').includes(' '+k+' '))score=Math.max(score,4+k.split(' ').length);else{const kw=k.split(' ').filter(w=>!generic.has(w));if(kw.length&&kw.every(w=>words.includes(w)))score=Math.max(score,2+kw.length)}}if(t.id==='intro'&&score>0)score-=.5;if(score>bestScore){bestScore=score;best=t}}
-  return result(best||{...refusal,text:"I don’t have a verified answer to that in my professional profile. Try a project, my experience, or how I approach design. I’d rather keep it accurate than make something up."});
+  return best?result(best):variation('offTopic');
  }
  window.VinnyChat=Object.freeze({reply,topics:topics.map(t=>({id:t.id,label:labels[t.id]}))});
 })();

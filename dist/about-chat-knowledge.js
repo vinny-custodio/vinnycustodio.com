@@ -29,6 +29,10 @@
  ];
  const labels={intro:'Tell me about yourself',current:'What are you doing now?',history:'Your work history',work:'Where should I start?',everkind:'Tell me about Everkind','everkind-process':'How did Everkind evolve?',trains:'Tell me about Melon Trains','trains-process':'What changed in the booking flow?',risd:'Tell me about RISD',labs:'What is Design Labs?',umw:'Mary Washington',ctrl:'What is CTRL?',vista:'Tell me about Vista',pantrx:'What is Pantrx?',georgia:'Your government work',industries:'Which industries?',approach:'How do you approach design?',craft:'What does craft mean to you?',systems:'Your design systems work',concepts:'Show me UI concepts',mentorship:'Do you offer mentorship?',contact:'How can I reach you?',tools:'How do you use AI tools?',origin:'How did you get started?'};
  const normalize=s=>s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+ // Conservative Damerau-Levenshtein matching: unique close words only.
+ const vocabulary=[...new Set(topics.flatMap(t=>t.keys).flatMap(key=>normalize(key).split(' ')).filter(word=>word.length>=4))];
+ function distance(a,b){const rows=Array.from({length:a.length+1},()=>Array(b.length+1).fill(0));for(let i=0;i<=a.length;i++)rows[i][0]=i;for(let j=0;j<=b.length;j++)rows[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++){rows[i][j]=Math.min(rows[i-1][j]+1,rows[i][j-1]+1,rows[i-1][j-1]+(a[i-1]===b[j-1]?0:1));if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])rows[i][j]=Math.min(rows[i][j],rows[i-2][j-2]+1)}return rows[a.length][b.length]}
+ function correct(q){return q.replace(/\bever kind\b/g,'everkind').replace(/\brsd\b/g,'risd').split(' ').map(word=>{if(word.length<4||word.length>24||vocabulary.includes(word))return word;const limit=word.length>=8?2:1;let best=limit+1,matches=[];for(const candidate of vocabulary){if(Math.abs(candidate.length-word.length)>limit)continue;const d=distance(word,candidate);if(d<best){best=d;matches=[candidate]}else if(d===best)matches.push(candidate)}return best<=limit&&matches.length===1?matches[0]:word}).join(' ')}
  const privateTopics=/\b(passwords?|credentials?|secrets?|tokens?|api keys?|github|repositories|repository|source code|environment variables?|security|vulnerabilit\w*|hack\w*|exploits?|injections?|system prompts?|developer messages?|instructions?|private|personal life|wife|spouse|married|family|children|kids|birthday|birth date|home address|phone|telephone|income|salary|bank|medical|health history|politics|religion|hobbies|live|living|based|location|address)\b/;
  const boundaryReplies={
  privacy:[
@@ -79,7 +83,9 @@
  function reply(message,lastTopic=null){
   if(typeof message!=='string'||!message.trim())return result({kind:'offTopic',text:'A question would help. What would you like to know about me?'});
   if(message.length>600)return result({kind:'offTopic',text:'That’s a novella. Give me a shorter question about me and I’ll keep up.'});
-  const q=normalize(message);
+  const raw=normalize(message);
+  if(privateTopics.test(raw))return variation('privacy');
+  const q=correct(raw);
   if(privateTopics.test(q))return variation('privacy');
   if(/\b(stupid|idiot|moron|dumb|ugly|trash|garbage|sucks?|loser|pathetic|talentless|useless|fuck|shit|bitch|asshole|offend|roast|insult)\b/.test(q))return variation('insult');
   if(/^(hi|hey|hello|hiya|yo|ola|oi)( vinny| there)?$/.test(q))return variation('greeting');

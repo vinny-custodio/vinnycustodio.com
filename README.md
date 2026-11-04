@@ -1,48 +1,30 @@
 # Vinny Custodio portfolio
 
-Plain HTML, CSS, and JavaScript. There is no framework, build step, or required hosting provider.
+A portable website built with plain HTML, CSS, and JavaScript. The files in `dist/` are the editable source and the deployable website. No build step or paid runtime is required.
 
-## Local preview
+## Start on another computer or in a cloud workspace
 
-From this folder:
+1. Clone https://github.com/vinny-custodio/vinnycustodio.com or extract a recovery ZIP.
+2. Open the project folder in any editor or coding assistant.
+3. Run `python3 scripts/preview.py` (Windows: `py -3 scripts/preview.py`).
+4. Open http://127.0.0.1:4173/ . In a cloud editor, forward port 4173; use `--host 0.0.0.0` only if that environment requires it.
 
-```sh
-ruby -run -e httpd dist -p 4173
-```
+Tell a new assistant: “Read AGENTS.md and docs/PROJECT.md, then work on this portfolio.” No previous Codex conversation is needed.
 
-Then open `http://127.0.0.1:4173`.
+## Updates and publishing
 
-## Hosting
+Edit files in `dist/`, preview locally, and review on mobile and desktop. Push approved changes to GitHub `main`; the existing Cloudflare Pages connection publishes automatically. For review before production, use a separate branch and its Cloudflare preview.
 
-Deploy the contents of `dist/` to any static host. The site uses directory-based routes such as `melon-trains/index.html`, so the host should serve `index.html` for directory URLs.
+Cloudflare Pages: project `vinnycustodio-com`, production branch `main`, framework None, build command empty, output directory `dist`, root directory the repository root.
 
-### GitHub and Cloudflare Pages
+Preview site: https://vinnycustodio-com.pages.dev/ . Domain: vinnycustodio.com (migration status is in docs/DEPLOYMENT.md).
 
-Recommended repository name: `vinny-portfolio`, private visibility.
+## Recovery and backups
 
-Upload this project's website files (`dist/`, `README.md`, and `.gitignore`) to the repository. Do not upload the parent workspace, research files, exports, or `.openai/` configuration.
+- GitHub stores source, assets, instructions, and commit history independently of a Codex account.
+- `python3 scripts/backup.py` creates a self-contained ZIP with SHA-256 checksums. Keep a copy somewhere outside this computer, such as your own cloud drive.
+- `python3 scripts/verify_backup.py path/to/backup.zip` checks the archive before restoring it.
+- To restore without GitHub, extract the ZIP and run the preview. Upload `dist/` to any static host, or create a new repository and connect it to a host.
+- Moving Codex accounts does not move access to GitHub, Cloudflare, GoDaddy, or Figma. Sign into those accounts again when needed. No passwords, tokens, or browser sessions belong in this project.
 
-In Cloudflare Pages, connect the GitHub repository with these settings:
-
-- Production branch: `main`
-- Framework preset: None
-- Build command: leave empty
-- Build output directory: `dist`
-- Root directory: repository root
-
-Review the generated preview before connecting `vinnycustodio.com`. Add the domain through Pages Custom domains. For the root domain, configure Cloudflare DNS and preserve existing email DNS records. Domain registration can stay with the current registrar.
-
-Future pushes to `main` publish updates automatically. Use a separate branch to review changes in a preview before merging.
-
-The `.openai/hosting.json` file only records the earlier private ChatGPT Sites preview. It does not affect other hosting providers.
-
-## Structure
-
-- `dist/index.html` — homepage
-- `dist/my-work/` — work index
-- `dist/about-me/` — about page
-- `dist/contact/` — contact page
-- `dist/<project>/` — eight local case studies
-- `dist/assets/` — locally stored project imagery
-- `dist/case-studies.js` — existing case-study copy and image manifests
-- `dist/styles.css`, `dist/page.css`, `dist/case-study.css` — shared visual system
+See docs/PROJECT.md for design decisions and file locations; docs/DEPLOYMENT.md for hosting and domain recovery.

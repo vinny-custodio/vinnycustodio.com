@@ -6,13 +6,13 @@ Existing production URL: https://vinnycustodio-com.pages.dev/
 
 Settings: Git integration, branch `main`, framework None, build command empty, output `dist`, root repository root. A new host only needs the contents of `dist/`; directory routes must serve their index.html. No runtime secrets are required.
 
-## Domain migration status (last checked November 4, 2026)
+## Domain connection (last checked November 4, 2026)
 
-Registrar: GoDaddy. DNS moving to Cloudflare Free. User approved the change and completed GoDaddy identity verification. GoDaddy displayed custom nameservers `harlan.ns.cloudflare.com` and `mary.ns.cloudflare.com`. Cloudflare was still waiting for propagation. This status is historical, not a live check.
+Registrar remains GoDaddy; Cloudflare Free now manages DNS. GoDaddy uses `harlan.ns.cloudflare.com` and `mary.ns.cloudflare.com`; Cloudflare confirmed the zone is active.
 
-`www.vinnycustodio.com` was associated with Pages via CNAME setup. Cloudflare's www CNAME was changed from `sites.framer.app` to `vinnycustodio-com.pages.dev`; verification was requested. Root-domain association was blocked until Cloudflare recognizes the DNS zone as active. At that check, the root still had old Framer A records `31.43.161.6` and `31.43.160.6`.
+Both root `vinnycustodio.com` and `www.vinnycustodio.com` are associated with Pages and have proxied CNAMEs targeting `vinnycustodio-com.pages.dev`. The two old root Framer A records were replaced through Pages' activation flow. The last dashboard check showed www Active with SSL enabled and root Initializing. These are historical observations; check current Pages status and actual HTTPS rendering before reporting readiness. Some networks may retain old Framer DNS until caches expire.
 
-Remaining migration work: check zone activation, add root `vinnycustodio.com` in Pages Custom domains, follow Pages' DNS replacement flow for the root, verify both HTTPS hostnames and actual portfolio rendering. Do not claim the custom domain is ready based only on this file.
+No further DNS replacement is pending. Remaining verification is root certificate/hostname activation and actual rendering through both public hostnames. Do not alter email DNS while testing website propagation.
 
 ## Email must be preserved
 

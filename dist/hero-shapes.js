@@ -78,15 +78,18 @@
   function swapOnScroll(){
    pendingScroll=false;if(document.hidden||!title.querySelector('.hero-letter'))return;
    const rect=title.getBoundingClientRect(),now=performance.now();
-   if(rect.bottom<40||rect.top>innerHeight-40||now-lastSwap<1600||Math.abs(scrollY-lastY)<35)return;
+   if(rect.bottom<40||rect.top>innerHeight-40||now-lastSwap<2000||Math.abs(scrollY-lastY)<35)return;
    lastSwap=now;lastY=scrollY;
    const lines=[...title.querySelectorAll('.hero-line')];
    const groups=lines.length?lines.map(line=>[...line.querySelectorAll('.hero-letter')]):[...Array(3)].map((_,i)=>[...title.querySelectorAll('.hero-letter')].filter((_,n)=>n%3===i));
-   groups.slice(0,3).forEach(group=>{
+   groups.slice(0,3).forEach((group,lineIndex)=>{
     const candidates=group.filter(letter=>/[a-z]/i.test(letter.textContent)&&!letter.querySelector('.hero-hover-shape'));
     if(!candidates.length)return;const letter=candidates[Math.floor(Math.random()*candidates.length)];
-    index=Math.floor(Math.random()*paths.length);pop({target:letter});
-    active.set(letter,setTimeout(()=>clearScrollLetter(letter),1250));
+    active.set(letter,setTimeout(()=>{
+     if(document.hidden||!letter.isConnected){active.delete(letter);return;}
+     index=Math.floor(Math.random()*paths.length);pop({target:letter});
+     active.set(letter,setTimeout(()=>clearScrollLetter(letter),1250));
+    },lineIndex*240));
    });
   }
   addEventListener('scroll',()=>{if(!pendingScroll){pendingScroll=true;requestAnimationFrame(swapOnScroll)}},{passive:true});

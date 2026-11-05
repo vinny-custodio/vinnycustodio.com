@@ -18,7 +18,7 @@
   busy=false;send.disabled=!input.value.trim();log.scrollTop+=article.getBoundingClientRect().top-log.getBoundingClientRect().top-12;
  }
  form.addEventListener('submit',e=>{e.preventDefault();ask(input.value)});input.addEventListener('input',()=>send.disabled=busy||!input.value.trim());
- const knowledge=document.createElement('script');knowledge.src=new URL('about-chat-knowledge.js?v=5',root).href;knowledge.onload=()=>{input.disabled=false};knowledge.onerror=()=>{form.querySelector('small').textContent='The guide could not load. Please refresh to try again.'};document.head.append(knowledge);
+ const knowledge=document.createElement('script');knowledge.src=new URL('about-chat-knowledge.js?v=6',root).href;knowledge.onload=()=>{input.disabled=false};knowledge.onerror=()=>{form.querySelector('small').textContent='The guide could not load. Please refresh to try again.'};document.head.append(knowledge);
  panel.querySelector('.chat-close').addEventListener('click',close);
  document.addEventListener('keydown',e=>{if(e.key==='Tab'&&mobile.matches&&document.body.classList.contains('chat-open')){const items=[...panel.querySelectorAll('button:not(:disabled),input:not(:disabled),a[href],summary')].filter(el=>el.getClientRects().length);const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}if(e.key==='Escape'&&document.body.classList.contains('chat-open')){e.preventDefault();close()}});
  document.addEventListener('click',e=>{const t=e.target.closest('[data-about-chat]');if(t){e.preventDefault();open(t)}});

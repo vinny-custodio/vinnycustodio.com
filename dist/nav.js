@@ -227,4 +227,4 @@
   addEventListener('hashchange', setCurrentLink);
 })();
 
-(() => {if(new URLSearchParams(location.search).get('canvas')!=='1')return;const src=new URL('design-engineering/canvas-runtime.js?v=7',document.currentScript.src);const script=document.createElement('script');script.src=src;document.head.append(script)})();
+(() => {if(new URLSearchParams(location.search).get('canvas')!=='1')return;const src=new URL('design-engineering/canvas-runtime.js?v=8',document.currentScript.src);const script=document.createElement('script');script.src=src;document.head.append(script)})();

@@ -17,3 +17,19 @@
 .canvas-board .canvas-frame-select img{border-radius:16px!important;width:100%;height:auto;object-fit:contain}
 
 .canvas-board figure{cursor:pointer}.canvas-board figure figcaption{cursor:pointer}
+/* The scenario navigator lives in a discoverable, collapsible side panel. */
+.canvas-tools{left:auto;right:20px;top:20px;bottom:auto;width:340px;max-width:calc(100vw - 40px);max-height:calc(100svh - 40px);display:block;padding:0;overflow:hidden;border:1px solid #e7e5ec;border-radius:28px;box-shadow:0 2px 6px #00000004,0 16px 48px #0000000d;transition:width .45s cubic-bezier(.22,1,.36,1)}
+.canvas-tool-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px}
+.canvas-tool-header>div:first-child{display:flex;flex-direction:column;gap:3px}.canvas-tool-header strong{font-size:18px;letter-spacing:-.025em;padding:0!important;font-weight:500}.canvas-tool-header span{font-size:12px;color:#888}.canvas-tool-header>div:last-child{display:flex;gap:6px}
+.canvas-tools .canvas-tool-header button{display:grid;place-items:center;flex-shrink:0;width:32px;height:32px;min-height:32px;padding:7px!important;background:#f3f2f6;border-radius:50%!important;font-size:16px}
+.canvas-tool-header svg{display:block;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.canvas-tool-content{max-height:calc(100svh - 130px);overflow-y:auto;overscroll-behavior:contain;padding:0 20px 20px}.canvas-tool-content[hidden]{display:none}
+.canvas-tool-intro{margin:0 0 22px;font-size:14px!important;line-height:1.5;color:#777!important;filter:none!important}
+.canvas-scenario-label{display:flex;flex-direction:column;gap:8px;font-size:12px;color:#777}
+.canvas-tools .canvas-scenario-label select{width:100%;max-width:none;min-height:46px;border:1px solid #e7e5ec;border-radius:16px;background:#f8f7fa;color:#272735;padding:12px 14px;font-size:14px}
+.canvas-flow{margin:18px 0 24px}.canvas-tools .canvas-step{display:block;max-width:none;white-space:normal;font-size:12px;color:#777;line-height:1.5;margin-bottom:10px}.canvas-flow>div{display:grid;grid-template-columns:1fr 1fr;gap:8px}.canvas-tools .canvas-flow button{font-size:14px;min-height:44px;padding:10px 14px}.canvas-tools [data-next]{background:#272735;color:#fff}
+.canvas-tool-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:20px;border-top:1px solid #eeecf2}.canvas-tools .canvas-tool-actions button{font-size:13px;min-height:42px;padding:10px 12px}.canvas-tools .canvas-tool-actions [data-board]{grid-column:1/-1;background:#e9e5ff;color:#5142c2;font-weight:500}
+.canvas-tools .canvas-inspector{position:static;width:auto;padding:20px 0 0;margin-top:20px;border-radius:0;border-top:1px solid #eeecf2;box-shadow:none;font-size:12px;max-height:none}.canvas-tools .canvas-inspector h2{font-size:16px}.canvas-tools .canvas-readout{font-size:12px;line-height:1.6;overflow-wrap:anywhere}.canvas-tools .canvas-copy{font-size:13px;width:100%}
+.canvas-tools.is-minimized{width:215px}.canvas-tools.is-minimized .canvas-tool-header{padding:12px 14px}.canvas-tools.is-minimized .canvas-tool-header span{display:none}.canvas-tools.is-minimized .canvas-tool-header strong{font-size:16px}
+@media(max-width:760px){.canvas-tools{right:12px;top:12px;bottom:auto;left:auto;width:310px;max-width:calc(100vw - 24px);max-height:calc(100svh - 24px);border-radius:24px}.canvas-tool-content{max-height:calc(100svh - 120px);padding:0 18px 18px}.canvas-tool-header{padding:18px}.canvas-tools.is-minimized{width:200px}}
+@media(prefers-reduced-motion:reduce){.canvas-tools{transition:none}}

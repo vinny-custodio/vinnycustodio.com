@@ -13,5 +13,5 @@ html[data-theme=dark] .home-page .work-filters button.liquid-covered{color:#1717
   .home-page .work-filter-rail{align-self:stretch;width:calc(100% + var(--gutter)*2);max-width:none;margin:24px calc(-1*var(--gutter)) 0;padding:4px 0;height:76px;box-sizing:border-box;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .home-page .work-filter-rail::-webkit-scrollbar{display:none}
   .home-page .work-filter-rail .work-filters{width:max-content;max-width:none;height:68px;min-height:68px;margin:0;padding:10px var(--gutter);gap:10px;overflow:visible;justify-content:flex-start;align-items:center;flex-wrap:nowrap}
-  .home-page .work-filters button{min-width:90px;padding:12px 15px;font-size:13px}
+  .home-page .work-filters button,.home-page .work-filters button:hover,.home-page .work-filters button[aria-pressed=true],html[data-theme=dark] .home-page .work-filters button:not([aria-pressed=true]){min-width:90px;padding:12px 15px;font-size:13px}
 }

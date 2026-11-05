@@ -44,7 +44,8 @@
     const key=buttons.map(button=>Object.values(box(button)).join(",")).join(";");
     if(force!==true&&key===geometryKey&&states.length)return;
     geometryKey=key;
-    cancelAnimationFrame(frame);frame=0;trailRelease=0;
+    const keepMotion=force!==true&&frame&&states.length;
+    if(!keepMotion){cancelAnimationFrame(frame);frame=0;trailRelease=0;}
     buttons.forEach((button,i)=>{const b=box(button),p=backgrounds[i];p.style.width=b.w+'px';p.style.height=b.h+'px';p.style.transform='translate('+b.x+'px,'+b.y+'px)'});
     // Keep the SVG sized to the pills, never its own overflowing filter bounds.
     const paddingRight=parseFloat(getComputedStyle(group).paddingRight)||0;
@@ -58,7 +59,7 @@
     merge.setAttribute('width',parseFloat(svg.style.width)+48);
     merge.setAttribute('height',group.clientHeight+48);
     target=box(active);
-    states=[0,1].map(()=>({...target,vx:0,vy:0,vw:0,vh:0}));
+    if(!keepMotion)states=[0,1].map(()=>({...target,vx:0,vy:0,vw:0,vh:0}));
     paint();
   }
   function tick(now){

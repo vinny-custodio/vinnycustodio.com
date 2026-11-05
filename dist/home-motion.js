@@ -19,7 +19,7 @@
 
   const allProjects=[...projects];
   let lastDeckProgress=-1;
-  const taxonomy={'everkind':['app'],'melon-trains':['saas','app'],'melon-flight':['saas'],'melon-checkout':['saas'],'qatar-2022':['website'],'rhode-island-school-of-design':['website'],'design-labs':['saas'],'university-of-mary-washington':['website'],'control-social':['ui-concepts'],'vista-app':['ui-concepts'],'pantrx':['ui-concepts'],'georgia-department-of-agriculture':['website']};
+  const taxonomy={'design-engineering':['design-engineering'],'everkind':['app'],'melon-trains':['saas','app'],'melon-flight':['saas'],'melon-checkout':['saas'],'qatar-2022':['website'],'rhode-island-school-of-design':['website'],'design-labs':['saas'],'university-of-mary-washington':['website'],'control-social':['ui-concepts'],'vista-app':['ui-concepts'],'pantrx':['ui-concepts'],'georgia-department-of-agriculture':['website']};
   const empty=document.createElement('section');empty.className='work-empty';empty.hidden=true;empty.setAttribute('aria-labelledby','work-empty-title');
   empty.innerHTML=`<div class="work-empty-art" aria-hidden="true">
     <svg class="work-empty-spark" viewBox="0 0 100 100"><path d="M43 4h14v27l19-19 10 10-19 21h29v14H67l19 21-10 10-19-19v27H43V69L24 88 14 78l19-21H4V43h29L14 22l10-10 19 19Z"/></svg>

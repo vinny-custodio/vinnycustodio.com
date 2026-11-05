@@ -2,3 +2,11 @@
 .reel-scroll-notch .notch-liquid{position:absolute;inset:0 auto auto -48px;display:block;width:249px;height:100px;translate:none;transform:none;animation:none;overflow:visible;pointer-events:none;fill:#fff}
 html[data-theme=dark] .reel-scroll-notch .notch-liquid{fill:var(--paper,#111114)}
 .reel-scroll-notch .notch-arrow{animation:none;transform-origin:center}
+
+/* A real transparent opening reveals the hero, including its text and artwork. */
+.home-page .work-reel,html[data-theme=dark] .home-page .work-reel{background:transparent!important}
+.work-reel-sticky{-webkit-mask-image:linear-gradient(#000,#000),var(--reel-notch-mask);mask-image:linear-gradient(#000,#000),var(--reel-notch-mask);-webkit-mask-size:100% 100%,249px 100px;mask-size:100% 100%,249px 100px;-webkit-mask-position:0 0,center top;mask-position:0 0,center top;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-composite:xor;mask-composite:exclude}
+
+/* Arrow and cutout share the same geometric center. */
+.reel-scroll-notch{left:50%}
+.reel-scroll-notch .notch-arrow{left:50%}

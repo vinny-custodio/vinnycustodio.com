@@ -188,3 +188,4 @@ body[data-nav-mode=bottom] .app-nav{box-shadow:0 0 0 1px rgba(0,0,0,.04),0 2px 4
 @media(max-width:760px){.project{--card-padding:12px;--media-radius:20px}.hero-actions{gap:12px}.hero-actions .hero-action,.hero-contact{min-height:60px;padding:18px 24px!important;font-size:16px}}
 @media(hover:none){.project:hover .project-media,.project:hover .project-media img{transform:none}.project.is-deck-active:hover{translate:-50% -50%}}
 @media(prefers-reduced-motion:reduce){.project.is-launching,.case-drawer-panel{transition-duration:.01ms!important}.case-drawer{transition-delay:0s}.photo-rail-track{animation:none!important}.hero-particle-orb{opacity:.3}.hero-action:hover,.hero-contact:hover{transform:none!important}}
+

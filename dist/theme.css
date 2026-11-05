@@ -223,3 +223,18 @@ html[data-theme=dark] .reel-scroll-notch .notch-liquid{fill:#1a1a1d}
  body[data-nav-mode=bottom] .app-nav .theme-tabs::before{width:32px}
  body[data-nav-mode=bottom] .app-nav .theme-tabs svg{width:18px!important;height:18px!important;min-width:18px}
 }
+
+/* Work cards keep their size while the desktop dock moves out of the way. */
+.dock-reveal-edge{display:none}
+@media(min-width:761px) and (hover:hover) and (pointer:fine){
+ body.dock-in-work .dock-reveal-edge{display:block;position:fixed;inset:auto 0 0;height:18px;z-index:68}
+ body.dock-in-work:not(.dock-edge-active) .app-nav:not(:hover):not(:has(:focus-visible,.contact-dropdown.is-open,.copy-toast.is-showing)){translate:var(--toast-shift,0px) 160px!important;pointer-events:none}
+ body.chat-open.dock-in-work:not(.dock-edge-active) .app-nav:not(:hover):not(:has(:focus-visible,.contact-dropdown.is-open,.copy-toast.is-showing)){translate:calc(var(--chat-space) / -2) 160px!important}
+}
+/* A small hover lift for the top navigation pills. */
+@media(hover:hover) and (pointer:fine){
+ .about-top-nav :is(nav>a,summary,.top-contact-trigger,.about-menu-toggle){transition:translate .48s cubic-bezier(.22,1.45,.36,1),background-color .2s ease,color .2s ease!important}
+ .about-top-nav :is(nav>a,summary,.top-contact-trigger,.about-menu-toggle):hover{translate:0 -4px}
+ .about-top-nav :is(nav>a,summary,.top-contact-trigger,.about-menu-toggle):active{translate:0 -1px}
+}
+@media(prefers-reduced-motion:reduce){.about-top-nav :is(nav>a,summary,.top-contact-trigger,.about-menu-toggle){translate:none!important}}

@@ -50,6 +50,7 @@
  viewport.addEventListener('wheel',e=>{e.preventDefault();if(e.ctrlKey||e.metaKey){const r=viewport.getBoundingClientRect();zoomAt(pan.zoom*Math.exp(-e.deltaY*.008),e.clientX-r.left,e.clientY-r.top)}else{pan.x-=e.deltaX;pan.y-=e.deltaY;paintBoard()}},{passive:false});
  viewport.addEventListener('keydown',e=>{if(e.target!==viewport)return;const moves={ArrowLeft:[80,0],ArrowRight:[-80,0],ArrowUp:[0,80],ArrowDown:[0,-80]};if(moves[e.key]){e.preventDefault();pan.x+=moves[e.key][0];pan.y+=moves[e.key][1];paintBoard()}else if(['+','=','-','0'].includes(e.key)){e.preventDefault();if(e.key==='0')fitBoard();else zoomAt(pan.zoom+(e.key==='-'?-.1:.1))}});
  new ResizeObserver(()=>{if(board.open)paintBoard()}).observe(viewport);
+ css.addEventListener('load',()=>{if(board.open)requestAnimationFrame(fitBoard)});
  function theme(value){document.documentElement.dataset.theme=value;document.querySelectorAll('[data-theme-option]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.themeOption===value)))}
  const flow=[['home-light','Meet Vinny'],['work-all','Explore the work'],['work-app','Narrow it to apps'],['work-case','Open a case study'],['work-eng','Explore design engineering'],['about-light','Get to know the designer'],['contact','Get in contact']];
  let currentScenario='home-light';
